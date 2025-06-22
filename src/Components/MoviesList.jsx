@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from "react";
 import MovieCard from "./MovieCard";
 
-
-const MoviesList = ({url, title}) => {
+const MoviesList = ({ url, title }) => {
     const [movies, setMovies] = useState([]);
     const [page, setPage] = useState(1);
     const [loading, setLoading] = useState(false);
@@ -26,7 +25,7 @@ const MoviesList = ({url, title}) => {
 
     return (
         <>
-            <h1 className="text-center">{title}</h1>
+            <h1 className="page-title">{title}</h1>
             <div className="movies-container">
                 {movies.map((movie, index) => (
                     <MovieCard key={index} title={movie.title} imgBackdrop={movie.backdrop_path} imgPath={movie.poster_path} year={movie.release_date} movieId={movie.id} language={movie.original_language} overview={movie.overview} />
@@ -35,12 +34,14 @@ const MoviesList = ({url, title}) => {
             {loading ? (
                 <div className="loading-movies-container">
                     {Array.from({ length: 20 }).map((_, idx) => (
-                        <div key={idx} className="loading-movie">Loading Movie Details...</div>
+                        <div key={idx} className="loading-movie"><span className="loading-movie-text">Loading Movie Details...</span></div>
                     ))}
                 </div>
-            ) : <button className="load-more-button"
-                onClick={() => setPage((prev) => prev + 1)}
-                disabled={loading} > Load More... </button>
+            ) : <div className="load-more-button-container">
+                <button className="load-more-button"
+                    onClick={() => setPage((prev) => prev + 1)}
+                    disabled={loading} > Load More... </button>
+            </div>
             }
         </>
     );

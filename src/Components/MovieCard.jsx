@@ -28,12 +28,14 @@ const MovieCard = ({ title, imgBackdrop, imgPath, year, movieId, language, overv
     return (
         <Link to={`/movie/${movieId}`}>
             <div className="movie-container">
-                <img className="movie-image" src={`https://image.tmdb.org/t/p/original/${imgPath}`} alt="" />
+                <div className="movie-image-container">
+                    <img className="movie-image" src={`https://image.tmdb.org/t/p/original/${imgPath}`} alt="" />
+                </div>
+                <h2 className="movie-title">{title}</h2>
                 <div className="movie-content" style={{ backgroundImage: `url(https://image.tmdb.org/t/p/original/${imgBackdrop})` }}>
                     <div className="movie-content-overlay">
                         <div className="movie-info">
-                            <h3 className="year">{year.split("-")[0]}</h3>
-                            <h3 className="age-group">U/A 15+</h3>
+                            <h3 className="year">{(year) ? year.split("-")[0] : "N/A"}</h3>
                             <h3 className="runtime">{runtime}</h3>
                             <h3 className="language">{(language == "hi") ? "Hindi" : (language == "en") ? "English" : 
                             (language == "mr") ? "Marathi" : (language == "ta") ? "Tamil" : (language == "te") ? "Telugu" : 
