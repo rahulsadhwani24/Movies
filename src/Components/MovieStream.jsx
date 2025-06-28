@@ -35,11 +35,11 @@ const MovieStream = () => {
     }, [movieId]);
 
     const vidFast = `https://vidfast.pro/movie/${movieId}?autoplay=true` //Too many ads
-    const embed = `https://www.2embed.cc/embed/${movieId}` //recommended
+    const embed = `https://www.2embed.cc/embed/${movieId}?autoplay=true` //recommended
     const autoEmbed = `https://player.autoembed.cc/embed/movie/${movieId}?autoplay=true?server=5` //no ads
 
     const [stream, setStream] = useState("stream");
-    const [streamData, setStreamData] = useState(null);
+    const [streamData, setStreamData] = useState();
 
     useEffect(() => {
         const fetchData = async () => {
@@ -53,21 +53,23 @@ const MovieStream = () => {
 
 
     return (
-        <>
-            <div className='video-container'>
-                {streamData && stream === "stream" ? (
-                    <VideoPlayer playlistUrl={streamData.playlist} audioTracks={streamData.audioTracks} />
-                ) : (
-                    <iframe allowFullScreen={true} fullScreen={true} autoPlay={true} src={stream} width="100%" height="100%" referrerpolicy="origin" />
-                )}
-            </div>
-            <div className='stream-options'>
-                <button disabled={stream === "stream"} onClick={() => setStream("stream")}>Play with Stream</button>
-                <button disabled={stream === embed} onClick={() => setStream(embed)}>Play with Server 1 (Embed)</button>
-                <button disabled={stream === autoEmbed} onClick={() => setStream(autoEmbed)}>Play with Server 2 (AutoEmbed)</button>
-                <button disabled={stream === vidFast} onClick={() => setStream(vidFast)}>Play with Server 3 (Vidfast)</button>
-            </div>
-        </>
+        streamData && (
+            <>
+                <div className='video-container'>
+                    {stream === "stream" ? (
+                        <VideoPlayer playlistUrl={streamData.playlist} audioTracks={streamData.audioTracks} />
+                    ) : (
+                        <iframe allowFullScreen={true} autoPlay={true} src={stream} width="100%" height="100%" referrerPolicy="origin" />
+                    )}
+                </div>
+                <div className='stream-options'>
+                    <button disabled={stream === "stream"} onClick={() => setStream("stream")}>Play with Stream</button>
+                    <button disabled={stream === embed} onClick={() => setStream(embed)}>Play with Server 1 (Embed)</button>
+                    <button disabled={stream === autoEmbed} onClick={() => setStream(autoEmbed)}>Play with Server 2 (AutoEmbed)</button>
+                    <button disabled={stream === vidFast} onClick={() => setStream(vidFast)}>Play with Server 3 (Vidfast)</button>
+                </div>
+            </>
+        )
     )
 }
 

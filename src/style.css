@@ -404,7 +404,6 @@ body {
 
 .video-player{
     width: 100%;
-    height: 100%;
 }
 
 .video-container iframe{
@@ -488,6 +487,14 @@ body {
     .movie-title {
         display: none;
     }
+
+    .video-container {
+        height: 50vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-block: 20px;
+    }
 }
 
 @media (max-width: 580px) {
@@ -501,14 +508,6 @@ body {
     .search-input {
         min-width: 80vw;
         width: 80vw;
-    }
-    
-    .video-container {
-        height: 60vh;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        margin-block: 20px;
     }
 }
 

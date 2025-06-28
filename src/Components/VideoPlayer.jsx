@@ -11,6 +11,8 @@ function VideoPlayer({ playlistUrl }) {
     const hls = new Hls();
     hlsRef.current = hls;
 
+    
+
     hls.attachMedia(videoRef.current);
     hls.loadSource(playlistUrl);
 
@@ -24,6 +26,8 @@ function VideoPlayer({ playlistUrl }) {
       <video
         ref={videoRef}
         controls
+        playsInline
+        preload="auto"
         autoPlay
         width="100%"
       />
