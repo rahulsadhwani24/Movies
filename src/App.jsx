@@ -26,7 +26,7 @@ const App = () => {
     const fetchSuggestions = async () => {
       setLoadingSuggestions(true);
       const res = await fetch(
-        `https://api.themoviedb.org/3/search/movie?api_key=${TMDB_API_KEY}&query=${encodeURIComponent(query)}&language=en-US&sort_by=release_date.desc`
+        `https://api.themoviedb.org/3/search/movie?api_key=${TMDB_API_KEY}&query=${encodeURIComponent(query)}&language=en-US`
       );
       const data = await res.json();
       setSuggestions(data.results || []);
@@ -48,6 +48,7 @@ const App = () => {
         setQuery={setQuery}
         suggestions={showSuggestions ? suggestions : []}
         setShowSuggestions={setShowSuggestions}
+        showSuggestions={showSuggestions}
         loadingSuggestions={loadingSuggestions}
         searchPerformed={searchPerformed}
       />

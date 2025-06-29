@@ -6,17 +6,20 @@ const MovieCard = ({ title, imgBackdrop, imgPath, year, movieId, language, overv
     const [runtime, setRuntime] = useState(0);
 
     const fetchRuntime = async (movieId) => {
-        const res = await fetch(
-            `https://api.themoviedb.org/3/movie/${movieId}?api_key=${API_KEY}&language=en-US`
-        );
-        const data = await res.json();
-        // Convert runtime in minutes to hours and minutes
-        if (data.runtime !== undefined && data.runtime !== null) {
-            const hours = Math.floor(data.runtime / 60);
-            const minutes = data.runtime % 60;
-            data.runtime = `${hours}h ${minutes}m`;
-            setRuntime(data.runtime);
+        try{
+            const res = await fetch(
+                `https://api.themoviedb.org/3/movie/${movieId}?api_key=${API_KEY}&language=en-US`
+            );
+            const data = await res.json();
+            // Convert runtime in minutes to hours and minutes
+            if (data.runtime !== undefined && data.runtime !== null) {
+                const hours = Math.floor(data.runtime / 60);
+                const minutes = data.runtime % 60;
+                data.runtime = `${hours}h ${minutes}m`;
+                setRuntime(data.runtime);
+            }
         }
+        catch(error){}
     };
 
     useEffect(() => {

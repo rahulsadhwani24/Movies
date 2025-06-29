@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import logo from '/Logo.webp';
 
-const Header = ({ query, setQuery, suggestions, setShowSuggestions, loadingSuggestions, searchPerformed }) => {
+const Header = ({ query, setQuery, suggestions, setShowSuggestions, showSuggestions, loadingSuggestions, searchPerformed }) => {
     const wrapperRef = useRef(null);
 
     // Detect clicks outside
@@ -46,7 +46,7 @@ const Header = ({ query, setQuery, suggestions, setShowSuggestions, loadingSugge
                             <ul className="suggestions-list">
                                 {loadingSuggestions ? (
                                     <li className="suggestion-item"><strong>Loading...</strong></li>
-                                ) : suggestions.length === 0 && query.trim() !== "" && searchPerformed ? (
+                                ) : suggestions.length === 0 && query.trim() !== "" && searchPerformed && showSuggestions ? (
                                     <li className="suggestion-item"><strong>No movies found</strong></li>
                                 ) : (
                                     suggestions.map((movie) =>

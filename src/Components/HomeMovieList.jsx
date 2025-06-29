@@ -21,18 +21,23 @@ const HomeMovieList = ({ title, url, langType }) => {
         navigate('/movies', { state: { title, lang } });
     };
 
-    const setTitle = (title === "Bollywood Movies") ? "Most Watched Movies in India" :
-        (title === "Marvel Movies") ? "For Marvel Fans" :
-            (title === "Romance Movies") ? "Popular in Romance" :
-                (title === "Horror Movies") ? "Horror Movies" :
-                    (title === "Action Movies") ? "Action Movies" :
-                        (title === "Comedy Movies") ? "Comedy Movies" :
-                            (title === "Hindi Comedy Movies") ? "Hindi Comedy Movies" :
-                                (title === "Reality Movies") ? "Popular Reality" :
-                                    (title === "Sci-Fi Movies") ? "Sci-Fi Movies" :
-                                        (title === "Upcoming Movies") ? "Upcoming Movies" :
-                                            (title === "Trending Movies") ? "Trending Movies of the Day" :
-                                                (title === "Top Rated Movies") ? "Top Rated Movies on IMDB" : title;
+    const setTitle =
+    (title === "Bollywood Movies") ? "Most Watched Movies in India" :
+    (title === "Marvel Movies") ? "For Marvel Fans" :
+    (title === "Romance Movies") ? "Popular in Romance" :
+    (title === "Horror Movies") ? "Horror Movies" :
+    (title === "Action Movies") ? "Action Movies" :
+    (title === "Comedy Movies") ? "Comedy Movies" :
+    (title === "Hindi Comedy Movies") ? "Hindi Comedy Movies" :
+    (title === "Reality Movies") ? "Popular Reality" :
+    (title === "Sci-Fi Movies") ? "Sci-Fi Movies" :
+    (title === "Upcoming Movies") ? "Upcoming Movies" :
+    (title === "Trending Movies") ? "Trending Movies of the Day" :
+    (title === "Top Rated Movies") ? "Top Rated Movies on IMDB" :
+    (title === "Trending TV Shows") ? "Trending TV Shows Today" :
+    (title === "Hindi TV Shows") ? "Popular Hindi TV Shows" :
+    (title === "Anime") ? "Popular Anime Shows" :
+    title;
 
     return (
         <>

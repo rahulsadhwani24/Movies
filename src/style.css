@@ -438,6 +438,13 @@ body {
     cursor: default;
 }
 
+.video-stream-text-center{
+    font-size: clamp(16px, 2vw, 20px);
+    font-weight: 600;
+    text-align: center;
+    max-width: 80%;
+}
+
 /* ---------------------------------------------- Media Queries ---------------------------------------------- */
 
 @media (max-width: 768px) {

@@ -51,25 +51,23 @@ const MovieStream = () => {
         fetchData();
     }, [movieId]);
 
-
     return (
-        streamData && (
-            <>
-                <div className='video-container'>
-                    {stream === "stream" ? (
-                        <VideoPlayer playlistUrl={streamData.playlist} audioTracks={streamData.audioTracks} />
-                    ) : (
-                        <iframe allowFullScreen={true} autoPlay={true} src={stream} width="100%" height="100%" referrerPolicy="origin" />
-                    )}
-                </div>
-                <div className='stream-options'>
-                    <button disabled={stream === "stream"} onClick={() => setStream("stream")}>Play with Stream</button>
-                    <button disabled={stream === embed} onClick={() => setStream(embed)}>Play with Server 1 (Embed)</button>
-                    <button disabled={stream === autoEmbed} onClick={() => setStream(autoEmbed)}>Play with Server 2 (AutoEmbed)</button>
-                    <button disabled={stream === vidFast} onClick={() => setStream(vidFast)}>Play with Server 3 (Vidfast)</button>
-                </div>
-            </>
-        )
+        <>
+            <div className='video-container'>
+                {stream === "stream" ? (
+                    streamData ? <VideoPlayer playlistUrl={streamData.playlist} audioTracks={streamData.audioTracks} />
+                        : <div className='video-stream-text-center'>Video cannot be loaded with the current server. Please change server</div>
+                ) : (
+                    <iframe allowFullScreen={true} fullScreen={true} autoPlay={true} src={stream} width="100%" height="100%" referrerPolicy="origin" />
+                )}
+            </div>
+            <div className='stream-options'>
+                <button disabled={stream === "stream"} onClick={() => setStream("stream")}>Play with Stream</button>
+                <button disabled={stream === embed} onClick={() => setStream(embed)}>Play with Server 2</button>
+                <button disabled={stream === autoEmbed} onClick={() => setStream(autoEmbed)}>Play with Server 3</button>
+                <button disabled={stream === vidFast} onClick={() => setStream(vidFast)}>Play with Server 4</button>
+            </div>
+        </>
     )
 }
 

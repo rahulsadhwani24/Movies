@@ -10,9 +10,7 @@ function VideoPlayer({ playlistUrl }) {
 
     const hls = new Hls();
     hlsRef.current = hls;
-
-    
-
+ 
     hls.attachMedia(videoRef.current);
     hls.loadSource(playlistUrl);
 
